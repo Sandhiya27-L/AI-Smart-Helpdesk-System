@@ -1,0 +1,10 @@
+import api from './axios'
+export const createTicket      = (data)              => api.post('/tickets', data)
+export const getMyTickets      = (page = 0)          => api.get(`/tickets/my?page=${page}&size=10`)
+export const getAllTickets      = (page = 0)          => api.get(`/tickets?page=${page}&size=10`)
+export const getAssignedTickets= (page = 0)          => api.get(`/tickets/assigned?page=${page}&size=10`)
+export const getTicketById     = (id)                => api.get(`/tickets/${id}`)
+export const updateTicket      = (id, status, aId)   => api.patch(`/tickets/${id}`, null, { params: { status, assigneeId: aId } })
+export const searchTickets     = (kw, page = 0)      => api.get(`/tickets/search?keyword=${kw}&page=${page}`)
+export const addComment        = (ticketId, data)    => api.post(`/tickets/${ticketId}/comments`, data)
+export const getComments       = (ticketId)          => api.get(`/tickets/${ticketId}/comments`)
